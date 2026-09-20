@@ -1,0 +1,8 @@
+[build]
+  command = "mkdir -p public && cp index.html public/index.html"
+  publish = "public"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
