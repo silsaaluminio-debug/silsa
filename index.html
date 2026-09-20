@@ -43,9 +43,11 @@
   --shadow-2:0 8px 28px rgba(10,20,66,.16);
 }
 *,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
 body{
   margin:0;
+  width:100%;
+  overflow-x:hidden;
   font-family:var(--font-body);
   color:var(--carbon-900);
   background:var(--marfil);
@@ -131,6 +133,13 @@ nav.main-nav a:hover{color:var(--azul-800);}
   .brand-logo img{width:280px;max-width:68vw;}
   .cart-btn{padding:8px 12px 8px 10px;font-size:0;}
   .cart-btn svg{width:19px;height:19px;}
+  .header-inner{gap:8px;}
+  .header-actions{gap:6px;}
+}
+
+@media (max-width:400px){
+  .tel-chip{display:none;}
+  .brand-logo img{max-width:58vw;}
 }
 
 /* ================= HERO ================= */
