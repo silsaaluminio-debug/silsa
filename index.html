@@ -323,10 +323,24 @@ section{padding:88px 0;}
 .catalogo .section-head p.desc{color:rgba(255,255,255,.65);}
 
 .cat-toolbar{
-  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
   margin-bottom:14px;position:sticky;top:56px;z-index:20;
   background:var(--azul-950);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);
 }
+.cat-search{
+  position:relative;flex:1 1 220px;max-width:280px;
+}
+.cat-search svg{
+  position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:15px;height:15px;color:rgba(255,255,255,.4);pointer-events:none;
+}
+.cat-search input{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  color:#fff;border-radius:99px;padding:8px 14px 8px 32px;font-size:13px;
+  transition:border-color .15s,background .15s;
+}
+.cat-search input::placeholder{color:rgba(255,255,255,.4);}
+.cat-search input:focus{outline:none;border-color:var(--naranja-500);background:rgba(255,255,255,.1);}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;}
 .tab-btn{
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.6);
@@ -593,6 +607,10 @@ footer.site{background:var(--carbon-900);color:rgba(255,255,255,.7);padding:56px
 
     <div class="cat-toolbar">
       <div class="tabs" id="tabsWrap"></div>
+      <div class="cat-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="catSearchInput" placeholder="Buscar medida (ej. 0.90 X 200)" autocomplete="off">
+      </div>
     </div>
 
     <div id="prodListWrap"></div>
@@ -731,6 +749,12 @@ const overlay = document.getElementById('overlay');
 const cartDrawer = document.getElementById('cartDrawer');
 const drawerBody = document.getElementById('drawerBody');
 const drawerFoot = document.getElementById('drawerFoot');
+const catSearchInput = document.getElementById('catSearchInput');
+
+catSearchInput.addEventListener('input', (e)=>{
+  searchTerm = e.target.value;
+  renderList();
+});
 
 /* ---------- construir tabs de espesor ---------- */
 function buildTabs(){
