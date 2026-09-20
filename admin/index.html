@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silsa Aluminio · Panel de administración</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul-950:#0A1442; --azul-900:#0F1D5C; --azul-800:#142E9C; --azul-700:#1B3AB8;
+  --naranja-500:#F0A22E; --rojo-600:#C41230; --verde-wa:#25D366;
+  --alu-100:#EEF0F3; --alu-200:#DDE1E7; --alu-300:#C6CCD4; --alu-700:#565E6E;
+  --carbon-900:#12141B; --marfil:#FAFAF8;
+  --font-display:'Oswald',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'Space Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;font-family:var(--font-body);background:var(--alu-100);color:var(--carbon-900);}
+h1,h2,h3{font-family:var(--font-display);color:var(--azul-950);margin:0;}
+button{font-family:inherit;cursor:pointer;}
+input,select,textarea{font-family:inherit;}
+
+/* ---------- login ---------- */
+.login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(120% 140% at 82% -10%, var(--azul-700) 0%, var(--azul-900) 45%, var(--azul-950) 100%);
+  padding:20px;
+}
+.login-card{
+  background:#fff;border-radius:12px;padding:40px 36px;max-width:380px;width:100%;
+  box-shadow:0 30px 60px rgba(0,0,0,.35);
+}
+.login-card h1{font-size:22px;margin-bottom:4px;}
+.login-card p.sub{color:var(--alu-700);font-size:13.5px;margin-bottom:24px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12.5px;font-weight:600;color:var(--alu-700);margin-bottom:6px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 12px;border:1.5px solid var(--alu-300);border-radius:6px;font-size:14.5px;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--azul-700);}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:6px;border:none;
+  background:var(--azul-950);color:#fff;transition:background .15s;
+}
+.btn:hover{background:var(--carbon-900);}
+.btn.full{width:100%;}
+.btn.orange{background:var(--naranja-500);color:var(--azul-950);}
+.btn.orange:hover{background:#ffb544;}
+.btn.danger{background:var(--rojo-600);color:#fff;}
+.btn.small{padding:7px 13px;font-size:12.5px;}
+.err-msg{color:var(--rojo-600);font-size:13px;margin-top:10px;min-height:16px;}
+
+/* ---------- app shell ---------- */
+#app{display:none;min-height:100vh;}
+.topbar{
+  background:var(--azul-950);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;
+}
+.topbar .brand{font-family:var(--font-display);font-size:18px;letter-spacing:.3px;}
+.topbar .brand span{color:var(--naranja-500);}
+.topbar .who{display:flex;align-items:center;gap:14px;font-size:13px;color:rgba(255,255,255,.75);}
+.topbar .who button{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:99px;font-size:12.5px;}
+
+.tabs{display:flex;gap:4px;background:#fff;border-bottom:1px solid var(--alu-200);padding:0 24px;overflow-x:auto;}
+.tab{padding:14px 18px;font-size:14px;font-weight:600;color:var(--alu-700);border-bottom:2.5px solid transparent;white-space:nowrap;}
+.tab.active{color:var(--azul-800);border-color:var(--naranja-500);}
+
+.view{padding:24px;max-width:1200px;margin:0 auto;display:none;}
+.view.active{display:block;}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px;}
+.card{background:#fff;border-radius:10px;padding:18px 20px;border:1px solid var(--alu-200);}
+.card .num{font-family:var(--font-display);font-size:28px;color:var(--azul-950);}
+.card .lab{font-size:12.5px;color:var(--alu-700);margin-top:4px;}
+
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:13.5px;}
+thead th{background:var(--azul-950);color:#fff;text-align:left;padding:10px 12px;font-size:12px;font-weight:600;position:sticky;top:0;}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--alu-200);}
+tbody tr:hover{background:var(--alu-100);}
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--alu-200);max-height:70vh;overflow-y:auto;}
+
+.chip{font-family:var(--font-mono);font-size:11px;padding:3px 8px;border-radius:99px;background:var(--alu-200);color:var(--azul-950);}
+.chip.status-nuevo{background:#dbeafe;color:#1e3a8a;}
+.chip.status-cotizado{background:#fef3c7;color:#92400e;}
+.chip.status-confirmado{background:#dcfce7;color:#166534;}
+.chip.status-cerrado{background:#e5e7eb;color:#374151;}
+.chip.status-cancelado{background:#fee2e2;color:#991b1b;}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.toolbar input.search{padding:9px 12px;border:1.5px solid var(--alu-300);border-radius:6px;font-size:13.5px;min-width:220px;}
+
+.inline-input{width:100%;padding:5px 7px;border:1px solid var(--alu-300);border-radius:4px;font-size:13px;}
+.inline-input:focus{outline:2px solid var(--naranja-500);}
+select.inline-input{background:#fff;}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(10,15,40,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#fff;border-radius:10px;padding:28px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal h3{margin-bottom:16px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+.toast{
+  position:fixed;bottom:20px;right:20px;background:var(--azul-950);color:#fff;padding:12px 18px;
+  border-radius:8px;font-size:13.5px;z-index:100;opacity:0;transform:translateY(10px);transition:.25s;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+.toast.error{background:var(--rojo-600);}
+
+.empty{padding:40px;text-align:center;color:var(--alu-700);font-size:14px;}
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <h1>Silsa Aluminio</h1>
+    <p class="sub">Panel de administración</p>
+    <form id="loginForm">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" id="loginUser" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn full">Entrar</button>
+      <div class="err-msg" id="loginErr"></div>
+    </form>
+  </div>
+</div>
+
+<div id="app">
+  <div class="topbar">
+    <div class="brand">SILSA <span>ADMIN</span></div>
+    <div class="who">
+      <span id="whoUser"></span>
+      <button id="changePassBtn">Cambiar contraseña</button>
+      <button id="logoutBtn">Salir</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-view="dashboard">Resumen</div>
+    <div class="tab" data-view="products">Catálogo</div>
+    <div class="tab" data-view="orders">Pedidos</div>
+    <div class="tab" data-view="inventory">Inventario (Kardex)</div>
+  </div>
+
+  <div class="view active" id="view-dashboard">
+    <div class="cards" id="dashCards"></div>
+    <h3 style="margin-bottom:12px;">Últimos pedidos</h3>
+    <div class="table-wrap"><table id="dashOrdersTable"><thead><tr><th>Folio</th><th>Cliente</th><th>Kg</th><th>Total</th><th>Estatus</th><th>Fecha</th></tr></thead><tbody></tbody></table></div>
+    <h3 style="margin:24px 0 12px;">Stock bajo (≤5 kg)</h3>
+    <div class="table-wrap"><table id="dashLowStockTable"><thead><tr><th>Producto</th><th>Stock (kg)</th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div class="view" id="view-products">
+    <div class="toolbar">
+      <input type="text" class="search" id="productSearch" placeholder="Buscar producto...">
+      <button class="btn orange" id="addProductBtn">+ Nuevo producto</button>
+    </div>
+    <div class="table-wrap"><table id="productsTable">
+      <thead><tr><th>Nombre</th><th>Ø mm</th><th>Cal. mm</th><th>Temple</th><th>Peso kg</th><th>Precio/kg</th><th>Stock kg</th><th>Activo</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+
+  <div class="view" id="view-orders">
+    <div class="toolbar">
+      <select id="orderStatusFilter" class="inline-input" style="max-width:200px;">
+        <option value="">Todos los estatus</option>
+        <option value="nuevo">Nuevo</option>
+        <option value="cotizado">Cotizado</option>
+        <option value="confirmado">Confirmado</option>
+        <option value="cerrado">Cerrado</option>
+        <option value="cancelado">Cancelado</option>
+      </select>
+    </div>
+    <div class="table-wrap"><table id="ordersTable">
+      <thead><tr><th>Folio</th><th>Cliente</th><th>Tel.</th><th>Artículos</th><th>Kg</th><th>Total</th><th>Estatus</th><th>Fecha</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+
+  <div class="view" id="view-inventory">
+    <div class="toolbar">
+      <button class="btn orange" id="addMovementBtn">+ Registrar movimiento</button>
+    </div>
+    <div class="table-wrap"><table id="inventoryTable">
+      <thead><tr><th>Fecha</th><th>Producto</th><th>Tipo</th><th>Kg</th><th>Referencia</th><th>Notas</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = '/api';
+let TOKEN = localStorage.getItem('silsa_admin_token') || '';
+let PRODUCTS_CACHE = [];
+
+function toast(msg, isError){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(()=> t.classList.remove('show'), 2800);
+}
+
+async function api(path, opts={}){
+  const res = await fetch(API + path, {
+    ...opts,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(TOKEN ? { Authorization: 'Bearer ' + TOKEN } : {}),
+      ...(opts.headers || {})
+    }
+  });
+  const data = await res.json().catch(()=>({}));
+  if(!res.ok){
+    if(res.status === 401){ doLogout(); }
+    throw new Error(data.error || 'Error de solicitud');
+  }
+  return data;
+}
+
+/* ---------- auth ---------- */
+function showApp(){
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  api('/auth/me').then(d=>{ document.getElementById('whoUser').textContent = d.username; }).catch(()=>{});
+  loadDashboard(); loadProducts(); loadOrders(); loadInventory();
+}
+function showLogin(){
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+}
+function doLogout(){
+  TOKEN = ''; localStorage.removeItem('silsa_admin_token');
+  showLogin();
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const username = document.getElementById('loginUser').value.trim();
+  const password = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('loginErr');
+  errEl.textContent = '';
+  try{
+    const data = await api('/auth/login', { method:'POST', body: JSON.stringify({ username, password }) });
+    TOKEN = data.token;
+    localStorage.setItem('silsa_admin_token', TOKEN);
+    showApp();
+  }catch(err){ errEl.textContent = err.message; }
+});
+document.getElementById('logoutBtn').addEventListener('click', doLogout);
+
+document.getElementById('changePassBtn').addEventListener('click', ()=>{
+  openModal(`
+    <h3>Cambiar contraseña</h3>
+    <div class="field"><label>Contraseña actual</label><input type="password" id="cpCurrent" class="inline-input"></div>
+    <div class="field"><label>Nueva contraseña (mín. 6 caracteres)</label><input type="password" id="cpNew" class="inline-input"></div>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button class="btn orange" id="cpSubmit">Guardar</button>
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+    </div>
+    <div class="err-msg" id="cpErr"></div>
+  `);
+  document.getElementById('cpSubmit').addEventListener('click', async ()=>{
+    const currentPassword = document.getElementById('cpCurrent').value;
+    const newPassword = document.getElementById('cpNew').value;
+    try{
+      await api('/auth/change-password', { method:'POST', body: JSON.stringify({ currentPassword, newPassword }) });
+      toast('Contraseña actualizada'); closeModal();
+    }catch(err){ document.getElementById('cpErr').textContent = err.message; }
+  });
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('view-' + tab.dataset.view).classList.add('active');
+  });
+});
+
+/* ---------- modal ---------- */
+function openModal(html){
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
+document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'modalOverlay') closeModal();
+});
+
+/* ---------- dashboard ---------- */
+async function loadDashboard(){
+  try{
+    const s = await api('/inventory/summary');
+    const statusMap = {}; s.ordersByStatus.forEach(o=> statusMap[o.status]=o.c);
+    document.getElementById('dashCards').innerHTML = `
+      <div class="card"><div class="num">${s.productCount}</div><div class="lab">Productos activos</div></div>
+      <div class="card"><div class="num">${s.totalStockKg.toFixed(1)}</div><div class="lab">Kg en inventario</div></div>
+      <div class="card"><div class="num">${statusMap.nuevo||0}</div><div class="lab">Pedidos nuevos</div></div>
+      <div class="card"><div class="num">${statusMap.confirmado||0}</div><div class="lab">Pedidos confirmados</div></div>
+    `;
+    const tb = document.querySelector('#dashOrdersTable tbody');
+    tb.innerHTML = s.recentOrders.map(o=>`
+      <tr><td class="mono">${o.folio}</td><td>${o.customer_name||'—'}</td><td>${o.total_kg.toFixed(2)}</td>
+      <td>${o.total_amount!=null?'$'+o.total_amount.toFixed(2):'—'}</td>
+      <td><span class="chip status-${o.status}">${o.status}</span></td>
+      <td>${new Date(o.created_at).toLocaleString('es-MX')}</td></tr>
+    `).join('') || `<tr><td colspan="6" class="empty">Sin pedidos aún</td></tr>`;
+
+    const lb = document.querySelector('#dashLowStockTable tbody');
+    lb.innerHTML = s.lowStock.map(p=>`<tr><td>${p.name}</td><td>${p.stock_kg.toFixed(2)}</td></tr>`).join('')
+      || `<tr><td colspan="2" class="empty">Sin alertas de stock bajo</td></tr>`;
+  }catch(err){ toast(err.message, true); }
+}
+
+/* ---------- productos ---------- */
+async function loadProducts(){
+  try{
+    PRODUCTS_CACHE = await api('/products/admin');
+    renderProducts();
+  }catch(err){ toast(err.message, true); }
+}
+function renderProducts(){
+  const term = document.getElementById('productSearch').value.trim().toLowerCase();
+  const rows = PRODUCTS_CACHE.filter(p=> !term || p.name.toLowerCase().includes(term));
+  const tb = document.querySelector('#productsTable tbody');
+  tb.innerHTML = rows.map(p=>`
+    <tr data-id="${p.id}">
+      <td><input class="inline-input f-name" value="${escapeAttr(p.name)}"></td>
+      <td><input class="inline-input f-diam" type="number" step="1" value="${p.diam??''}" style="width:70px;"></td>
+      <td><input class="inline-input f-thick" type="number" step="0.05" value="${p.thick??''}" style="width:65px;"></td>
+      <td><input class="inline-input f-temple" value="${p.temple??''}" style="width:55px;"></td>
+      <td><input class="inline-input f-weight" type="number" step="0.0001" value="${p.weight??''}" style="width:80px;"></td>
+      <td><input class="inline-input f-price" type="number" step="0.01" value="${p.price_per_kg??''}" style="width:80px;" placeholder="MXN/kg"></td>
+      <td><input class="inline-input f-stock" type="number" step="0.01" value="${p.stock_kg??0}" style="width:75px;"></td>
+      <td><input type="checkbox" class="f-active" ${p.active? 'checked':''}></td>
+      <td style="white-space:nowrap;">
+        <button class="btn small save-product">Guardar</button>
+        <button class="btn small danger del-product">Eliminar</button>
+      </td>
+    </tr>
+  `).join('') || `<tr><td colspan="9" class="empty">Sin productos</td></tr>`;
+
+  tb.querySelectorAll('.save-product').forEach(btn=>{
+    btn.addEventListener('click', async (e)=>{
+      const tr = e.target.closest('tr');
+      const id = tr.dataset.id;
+      const payload = {
+        name: tr.querySelector('.f-name').value,
+        diam: numOrNull(tr.querySelector('.f-diam').value),
+        thick: numOrNull(tr.querySelector('.f-thick').value),
+        temple: tr.querySelector('.f-temple').value || null,
+        weight: numOrNull(tr.querySelector('.f-weight').value),
+        price_per_kg: numOrNull(tr.querySelector('.f-price').value),
+        stock_kg: numOrNull(tr.querySelector('.f-stock').value) || 0,
+        active: tr.querySelector('.f-active').checked,
+      };
+      try{
+        await api('/products/admin/' + id, { method:'PUT', body: JSON.stringify(payload) });
+        toast('Producto actualizado'); loadProducts();
+      }catch(err){ toast(err.message, true); }
+    });
+  });
+  tb.querySelectorAll('.del-product').forEach(btn=>{
+    btn.addEventListener('click', async (e)=>{
+      const tr = e.target.closest('tr');
+      if(!confirm('¿Eliminar este producto? Esta acción no se puede deshacer.')) return;
+      try{
+        await api('/products/admin/' + tr.dataset.id, { method:'DELETE' });
+        toast('Producto eliminado'); loadProducts();
+      }catch(err){ toast(err.message, true); }
+    });
+  });
+}
+document.getElementById('productSearch').addEventListener('input', renderProducts);
+document.getElementById('addProductBtn').addEventListener('click', ()=>{
+  openModal(`
+    <h3>Nuevo producto</h3>
+    <div class="grid2">
+      <div class="field" style="grid-column:1/-1;"><label>Nombre</label><input id="npName" class="inline-input"></div>
+      <div class="field"><label>Diámetro (mm)</label><input id="npDiam" type="number" class="inline-input"></div>
+      <div class="field"><label>Calibre (mm)</label><input id="npThick" type="number" step="0.05" class="inline-input"></div>
+      <div class="field"><label>Temple</label><input id="npTemple" class="inline-input"></div>
+      <div class="field"><label>Peso (kg/pza)</label><input id="npWeight" type="number" step="0.0001" class="inline-input"></div>
+      <div class="field"><label>Precio por kg (MXN)</label><input id="npPrice" type="number" step="0.01" class="inline-input"></div>
+      <div class="field"><label>Stock inicial (kg)</label><input id="npStock" type="number" step="0.01" class="inline-input" value="0"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button class="btn orange" id="npSubmit">Crear</button>
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+    </div>
+    <div class="err-msg" id="npErr"></div>
+  `);
+  document.getElementById('npSubmit').addEventListener('click', async ()=>{
+    const payload = {
+      name: document.getElementById('npName').value.trim(),
+      diam: numOrNull(document.getElementById('npDiam').value),
+      thick: numOrNull(document.getElementById('npThick').value),
+      temple: document.getElementById('npTemple').value || null,
+      weight: numOrNull(document.getElementById('npWeight').value),
+      price_per_kg: numOrNull(document.getElementById('npPrice').value),
+      stock_kg: numOrNull(document.getElementById('npStock').value) || 0,
+      active: true,
+    };
+    if(!payload.name){ document.getElementById('npErr').textContent = 'El nombre es requerido'; return; }
+    try{
+      await api('/products/admin', { method:'POST', body: JSON.stringify(payload) });
+      toast('Producto creado'); closeModal(); loadProducts();
+    }catch(err){ document.getElementById('npErr').textContent = err.message; }
+  });
+});
+
+/* ---------- pedidos ---------- */
+async function loadOrders(){
+  try{
+    const status = document.getElementById('orderStatusFilter').value;
+    const rows = await api('/orders/admin' + (status? '?status='+status : ''));
+    const tb = document.querySelector('#ordersTable tbody');
+    tb.innerHTML = rows.map(o=>`
+      <tr>
+        <td class="mono">${o.folio}</td>
+        <td>${o.customer_name||'—'}</td>
+        <td>${o.customer_phone||'—'}</td>
+        <td>${o.items.map(i=>`${i.product_name} (${i.qty_kg}kg)`).join(', ')}</td>
+        <td>${o.total_kg.toFixed(2)}</td>
+        <td>${o.total_amount!=null?'$'+o.total_amount.toFixed(2):'—'}</td>
+        <td>
+          <select class="inline-input status-select" data-id="${o.id}">
+            ${['nuevo','cotizado','confirmado','cerrado','cancelado'].map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${s}</option>`).join('')}
+          </select>
+        </td>
+        <td>${new Date(o.created_at).toLocaleString('es-MX')}</td>
+      </tr>
+    `).join('') || `<tr><td colspan="8" class="empty">Sin pedidos</td></tr>`;
+
+    tb.querySelectorAll('.status-select').forEach(sel=>{
+      sel.addEventListener('change', async (e)=>{
+        try{
+          await api('/orders/admin/' + sel.dataset.id + '/status', { method:'PATCH', body: JSON.stringify({ status: sel.value }) });
+          toast('Estatus actualizado'); loadDashboard(); loadInventory(); loadProducts();
+        }catch(err){ toast(err.message, true); }
+      });
+    });
+  }catch(err){ toast(err.message, true); }
+}
+document.getElementById('orderStatusFilter').addEventListener('change', loadOrders);
+
+/* ---------- inventario / kardex ---------- */
+async function loadInventory(){
+  try{
+    const rows = await api('/inventory');
+    const tb = document.querySelector('#inventoryTable tbody');
+    tb.innerHTML = rows.map(m=>`
+      <tr><td>${new Date(m.created_at).toLocaleString('es-MX')}</td><td>${m.product_name}</td>
+      <td><span class="chip">${m.type}</span></td><td>${m.qty_kg}</td>
+      <td>${m.reference||'—'}</td><td>${m.notes||'—'}</td></tr>
+    `).join('') || `<tr><td colspan="6" class="empty">Sin movimientos registrados</td></tr>`;
+  }catch(err){ toast(err.message, true); }
+}
+document.getElementById('addMovementBtn').addEventListener('click', ()=>{
+  const options = PRODUCTS_CACHE.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+  openModal(`
+    <h3>Registrar movimiento de inventario</h3>
+    <div class="field"><label>Producto</label><select id="mvProduct" class="inline-input">${options}</select></div>
+    <div class="grid2">
+      <div class="field"><label>Tipo</label>
+        <select id="mvType" class="inline-input">
+          <option value="entrada">Entrada (compra/importación)</option>
+          <option value="salida">Salida (venta/consumo)</option>
+          <option value="ajuste">Ajuste</option>
+        </select>
+      </div>
+      <div class="field"><label>Cantidad (kg)</label><input id="mvQty" type="number" step="0.01" class="inline-input"></div>
+    </div>
+    <div class="field"><label>Referencia (folio, pedimento, factura...)</label><input id="mvRef" class="inline-input"></div>
+    <div class="field"><label>Notas</label><textarea id="mvNotes" class="inline-input" rows="2"></textarea></div>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button class="btn orange" id="mvSubmit">Registrar</button>
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+    </div>
+    <div class="err-msg" id="mvErr"></div>
+  `);
+  document.getElementById('mvSubmit').addEventListener('click', async ()=>{
+    const payload = {
+      product_id: Number(document.getElementById('mvProduct').value),
+      type: document.getElementById('mvType').value,
+      qty_kg: Number(document.getElementById('mvQty').value),
+      reference: document.getElementById('mvRef').value || null,
+      notes: document.getElementById('mvNotes').value || null,
+    };
+    if(!payload.qty_kg){ document.getElementById('mvErr').textContent = 'Ingresa una cantidad válida'; return; }
+    try{
+      await api('/inventory', { method:'POST', body: JSON.stringify(payload) });
+      toast('Movimiento registrado'); closeModal();
+      loadInventory(); loadProducts(); loadDashboard();
+    }catch(err){ document.getElementById('mvErr').textContent = err.message; }
+  });
+});
+
+/* ---------- utils ---------- */
+function numOrNull(v){ return v===''||v===null||v===undefined ? null : Number(v); }
+function escapeAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+
+/* ---------- init ---------- */
+if(TOKEN) { showApp(); } else { showLogin(); }
+</script>
+</body>
+</html>

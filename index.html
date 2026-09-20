@@ -146,53 +146,79 @@ nav.main-nav a:hover{color:var(--azul-800);}
   display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:center;
   padding-bottom:56px;
 }
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeInScale{
+  from{opacity:0;transform:scale(.94);}
+  to{opacity:1;transform:scale(1);}
+}
+@media (prefers-reduced-motion:reduce){
+  .eyebrow-industrial,.hero h1,.hero .lead,.hero-cta-row,.hero-specs,.logo-showcase,.logo-caption{animation:none !important;}
+}
 .eyebrow-industrial{
   display:flex;align-items:center;justify-content:center;text-align:center;gap:9px;
   width:fit-content;margin:0 auto 22px;
   font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:var(--naranja-500);
   border:1px solid rgba(240,162,46,.45);background:rgba(240,162,46,.08);
   padding:6px 12px;border-radius:99px;
+  animation:fadeInUp .6s ease-out both;
 }
 .eyebrow-industrial b{color:#fff;font-weight:700;}
 .hero h1{
   font-size:clamp(34px,5vw,54px);line-height:1.04;color:#fff;
   max-width:15ch;
+  animation:fadeInUp .7s ease-out .08s both;
 }
 .hero h1 em{font-style:normal;color:var(--naranja-500);}
 .hero .lead{
   margin-top:20px;font-size:18px;color:rgba(255,255,255,.82);
   max-width:46ch;line-height:1.55;
+  animation:fadeInUp .7s ease-out .16s both;
 }
-.hero-cta-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+.hero-cta-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;animation:fadeInUp .7s ease-out .24s both;}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   font-weight:700;font-size:15.5px;padding:15px 26px;border-radius:var(--radius-sm);
-  border:none;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease;
+  border:none;text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
 }
 .btn:active{transform:translateY(1px);}
-.btn-wa{background:var(--verde-wa);color:#08320f;}
-.btn-wa:hover{background:var(--verde-wa-dark);}
+.btn-wa{background:var(--verde-wa);color:#08320f;box-shadow:0 6px 18px rgba(37,211,102,.28);}
+.btn-wa:hover{background:var(--verde-wa-dark);transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.38);}
 .btn-wa svg{width:19px;height:19px;}
 .btn-outline-light{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff;}
-.btn-outline-light:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.btn-outline-light:hover{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-2px);}
 .btn-primary{background:var(--azul-800);color:#fff;}
 .btn-primary:hover{background:var(--azul-700);}
 .btn-dark{background:var(--azul-950);color:#fff;}
 .btn-dark:hover{background:var(--carbon-900);}
 
-.hero-specs{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap;}
-.hero-specs div{border-left:2px solid rgba(240,162,46,.6);padding-left:12px;}
+.hero-specs{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap;animation:fadeInUp .7s ease-out .32s both;}
+.hero-specs div{border-left:2px solid rgba(240,162,46,.6);padding-left:12px;transition:transform .2s ease;}
+.hero-specs div:hover{transform:translateX(3px);}
 .hero-specs .num{font-family:var(--font-display);font-size:26px;color:#fff;line-height:1;}
 .hero-specs .lab{font-size:12.5px;color:rgba(255,255,255,.65);margin-top:4px;}
 
 /* --- disco SVG hero art --- */
-.logo-showcase{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;min-height:320px;gap:22px;}
+.logo-showcase{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;min-height:320px;gap:22px;
+  animation:fadeInScale .8s ease-out .1s both;
+}
 .logo-plate{
   position:relative;width:100%;max-width:380px;
   background:radial-gradient(130% 130% at 28% 18%, #ffffff 0%, #eef0f3 55%, #c9cdd3 100%);
   border-radius:26px;padding:42px 38px;
   box-shadow:0 30px 60px rgba(0,0,0,.38);
+  transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
+  animation:floatPlate 5s ease-in-out infinite;
 }
+@keyframes floatPlate{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+@media (prefers-reduced-motion:reduce){.logo-plate{animation:none;}}
+.logo-plate:hover{box-shadow:0 40px 80px rgba(0,0,0,.45), 0 0 60px rgba(240,162,46,.2);}
 .logo-plate::before{
   content:'';position:absolute;inset:-3px;border-radius:29px;z-index:-1;
   background:linear-gradient(135deg, var(--naranja-500), var(--rojo-600));
@@ -202,6 +228,7 @@ nav.main-nav a:hover{color:var(--azul-800);}
   display:flex;align-items:center;justify-content:center;text-align:center;gap:9px;
   font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:rgba(255,255,255,.7);
   border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.05);
+  animation:fadeInUp .7s ease-out .4s both;
 }
 .logo-caption b{color:var(--naranja-500);}
 
@@ -214,7 +241,9 @@ nav.main-nav a:hover{color:var(--azul-800);}
   flex:1 0 auto;padding:16px 22px;display:flex;align-items:center;gap:10px;
   border-right:1px solid rgba(255,255,255,.1);white-space:nowrap;
   font-size:13.5px;color:rgba(255,255,255,.85);
+  transition:color .2s ease;
 }
+.strip-item:hover{color:var(--naranja-500);}
 .strip-item svg{width:16px;height:16px;color:var(--naranja-500);flex:none;}
 
 @media (max-width:900px){
@@ -600,11 +629,28 @@ footer.site{background:var(--carbon-900);color:rgba(255,255,255,.7);padding:56px
 <script>
 document.getElementById('yearNow').textContent = new Date().getFullYear();
 
-/* ---------- datos de productos ---------- */
-const PRODUCTS = [{"name": "DISCO 0.70 X 110 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0183, "diam": 110, "thick": 0.7, "temple": "O", "id": 21}, {"name": "DISCO 0.60 X 130 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0216, "diam": 130, "thick": 0.6, "temple": "H14", "id": 22}, {"name": "DISCO 0.90 X 130 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0324, "diam": 130, "thick": 0.9, "temple": "O", "id": 23}, {"name": "DISCO 0.60 X 150 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0287, "diam": 150, "thick": 0.6, "temple": "H14", "id": 24}, {"name": "DISCO 0.70 X 150 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.034, "diam": 150, "thick": 0.7, "temple": "O", "id": 25}, {"name": "DISCO 0.90 X 160 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.049, "diam": 160, "thick": 0.9, "temple": "O", "id": 26}, {"name": "DISCO 0.60 X 170 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0369, "diam": 170, "thick": 0.6, "temple": "H14", "id": 27}, {"name": "DISCO 0.70 X 180 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.049, "diam": 180, "thick": 0.7, "temple": "O", "id": 28}, {"name": "DISCO 0.90 X 180 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0621, "diam": 180, "thick": 0.9, "temple": "O", "id": 29}, {"name": "DISCO 0.60 X 190 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0461, "diam": 190, "thick": 0.6, "temple": "H14", "id": 30}, {"name": "DISCO 0.60 X 200 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0511, "diam": 200, "thick": 0.6, "temple": "H14", "id": 31}, {"name": "DISCO 0.90 X 200 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0766, "diam": 200, "thick": 0.9, "temple": "O", "id": 32}, {"name": "DISCO 0.60 X 210 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0563, "diam": 210, "thick": 0.6, "temple": "H14", "id": 33}, {"name": "DISCO 0.70 X 210 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0666, "diam": 210, "thick": 0.7, "temple": "O", "id": 34}, {"name": "DISCO 0.60 X 225 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0646, "diam": 225, "thick": 0.6, "temple": "O", "id": 35}, {"name": "DISCO 0.60 X 225 \"O\" (variante 2)", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0511, "diam": 225, "thick": 0.6, "temple": "O", "id": 36}, {"name": "DISCO 0.60 X 225 \"O\" (variante 3)", "cat": "Discos de aluminio", "unit": "disco", "weight": null, "diam": 225, "thick": 0.6, "temple": "O", "id": 37}, {"name": "DISCO 0.60 X 230 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0675, "diam": 230, "thick": 0.6, "temple": "H14", "id": 38}, {"name": "DISCO 0.70 X 230 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0799, "diam": 230, "thick": 0.7, "temple": "O", "id": 39}, {"name": "DISCO 0.90 X 230 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1013, "diam": 230, "thick": 0.9, "temple": "O", "id": 40}, {"name": "DISCO 0.60 X 240 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0735, "diam": 240, "thick": 0.6, "temple": "H14", "id": 41}, {"name": "DISCO 0.90 X 240 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1103, "diam": 240, "thick": 0.9, "temple": "O", "id": 42}, {"name": "DISCO 0.60 X 250 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0798, "diam": 250, "thick": 0.6, "temple": "H14", "id": 43}, {"name": "DISCO 0.70 X 250 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0944, "diam": 250, "thick": 0.7, "temple": "O", "id": 44}, {"name": "DISCO 0.60 X 270 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0931, "diam": 270, "thick": 0.6, "temple": "H14", "id": 45}, {"name": "DISCO 0.70 X 280 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1185, "diam": 280, "thick": 0.7, "temple": "O", "id": 46}, {"name": "DISCO 0.90 X 280 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1502, "diam": 280, "thick": 0.9, "temple": "O", "id": 47}, {"name": "DISCO 0.60 X 290 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1074, "diam": 290, "thick": 0.6, "temple": "H14", "id": 48}, {"name": "DISCO 0.90 X 290 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1611, "diam": 290, "thick": 0.9, "temple": "O", "id": 49}, {"name": "DISCO 2.00 X 300 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.383, "diam": 300, "thick": 2.0, "temple": "O", "id": 50}, {"name": "DISCO 0.60 X 310 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1227, "diam": 310, "thick": 0.6, "temple": "H14", "id": 51}, {"name": "DISCO 0.70 X 310 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1452, "diam": 310, "thick": 0.7, "temple": "H14", "id": 52}, {"name": "DISCO 0.90 X 310 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1841, "diam": 310, "thick": 0.9, "temple": "O", "id": 53}, {"name": "DISCO 0.90 X 320 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1961, "diam": 320, "thick": 0.9, "temple": "O", "id": 54}, {"name": "DISCO 0.60 X 330 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.139, "diam": 330, "thick": 0.6, "temple": "H14", "id": 55}, {"name": "DISCO 0.90 X 330 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2086, "diam": 330, "thick": 0.9, "temple": "O", "id": 56}, {"name": "DISCO 0.70 X 340 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1747, "diam": 340, "thick": 0.7, "temple": "H14", "id": 57}, {"name": "DISCO 0.90 X 340 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2214, "diam": 340, "thick": 0.9, "temple": "O", "id": 58}, {"name": "DISCO 2.00 X 340 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.492, "diam": 340, "thick": 2.0, "temple": "O", "id": 59}, {"name": "DISCO 0.60 X 350 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1564, "diam": 350, "thick": 0.6, "temple": "H14", "id": 60}, {"name": "DISCO 0.70 X 350 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1851, "diam": 350, "thick": 0.7, "temple": "H14", "id": 61}, {"name": "DISCO 0.90 X 350 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2346, "diam": 350, "thick": 0.9, "temple": "O", "id": 62}, {"name": "DISCO 0.60 X 360 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1655, "diam": 360, "thick": 0.6, "temple": "H14", "id": 63}, {"name": "DISCO 0.60 X 370 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1748, "diam": 370, "thick": 0.6, "temple": "H14", "id": 64}, {"name": "DISCO 0.70 X 370 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2068, "diam": 370, "thick": 0.7, "temple": "H14", "id": 65}, {"name": "DISCO 0.60 X 380 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1844, "diam": 380, "thick": 0.6, "temple": "H14", "id": 66}, {"name": "DISCO 0.70 X 380 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2182, "diam": 380, "thick": 0.7, "temple": "H14", "id": 67}, {"name": "DISCO 0.70 X 400 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2383, "diam": 400, "thick": 0.7, "temple": "H14", "id": 68}, {"name": "DISCO 0.70 X 420 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2665, "diam": 420, "thick": 0.7, "temple": "H14", "id": 69}, {"name": "DISCO 0.90 X 420 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3378, "diam": 420, "thick": 0.9, "temple": "O", "id": 70}, {"name": "DISCO 1.00 X 420 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3754, "diam": 420, "thick": 1.0, "temple": "O", "id": 71}, {"name": "DISCO 1.00 X 440 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.412, "diam": 440, "thick": 1.0, "temple": "O", "id": 72}, {"name": "DISCO 0.70 X 450 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.306, "diam": 450, "thick": 0.7, "temple": "H14", "id": 73}, {"name": "DISCO 0.90 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3878, "diam": 450, "thick": 0.9, "temple": "O", "id": 74}, {"name": "DISCO 1.00 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4309, "diam": 450, "thick": 1.0, "temple": "O", "id": 75}, {"name": "DISCO 1.25 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.5387, "diam": 450, "thick": 1.25, "temple": "O", "id": 76}, {"name": "DISCO 2.00 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.8618, "diam": 450, "thick": 2.0, "temple": "O", "id": 77}, {"name": "DISCO 0.80 X 460 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3602, "diam": 460, "thick": 0.8, "temple": "H14", "id": 78}, {"name": "DISCO 1.00 X 480 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4903, "diam": 480, "thick": 1.0, "temple": "O", "id": 79}, {"name": "DISCO 1.00 X 500 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.532, "diam": 500, "thick": 1.0, "temple": "O", "id": 80}, {"name": "DISCO 1.25 X 500 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.665, "diam": 500, "thick": 1.25, "temple": "O", "id": 81}, {"name": "DISCO 0.80 X 510 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4428, "diam": 510, "thick": 0.8, "temple": "H14", "id": 82}, {"name": "DISCO 1.25 X 520 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.7193, "diam": 520, "thick": 1.25, "temple": "O", "id": 83}, {"name": "DISCO 0.80 X 530 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4782, "diam": 530, "thick": 0.8, "temple": "H14", "id": 84}, {"name": "DISCO 2.00 X 530 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.1955, "diam": 530, "thick": 2.0, "temple": "O", "id": 85}, {"name": "DISCO 1.25 X 540 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.7757, "diam": 540, "thick": 1.25, "temple": "O", "id": 86}, {"name": "DISCO 0.80 X 560 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.5339, "diam": 560, "thick": 0.8, "temple": "H14", "id": 87}, {"name": "DISCO 1.25 X 570 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.8642, "diam": 570, "thick": 1.25, "temple": "O", "id": 88}, {"name": "DISCO 1.80 X 570 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.2445, "diam": 570, "thick": 1.8, "temple": "O", "id": 89}, {"name": "DISCO 1.25 X 610 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.9898, "diam": 610, "thick": 1.25, "temple": "O", "id": 90}, {"name": "DISCO 1.25 X 620 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.0225, "diam": 620, "thick": 1.25, "temple": "O", "id": 91}, {"name": "DISCO 1.25 X 630 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.0558, "diam": 630, "thick": 1.25, "temple": "O", "id": 92}, {"name": "DISCO 1.50 X 630 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.2669, "diam": 630, "thick": 1.5, "temple": "O", "id": 93}, {"name": "DISCO 2.00 X 640 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7433, "diam": 640, "thick": 2.0, "temple": "O", "id": 94}, {"name": "DISCO 1.25 X 650 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.1239, "diam": 650, "thick": 1.25, "temple": "O", "id": 95}, {"name": "DISCO 3.00 X 650 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.6972, "diam": 650, "thick": 3.0, "temple": "O", "id": 96}, {"name": "DISCO 1.65 X 700 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7205, "diam": 700, "thick": 1.65, "temple": "O", "id": 97}, {"name": "DISCO 1.40 X 730 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.5876, "diam": 730, "thick": 1.4, "temple": "O", "id": 98}, {"name": "DISCO 1.50 X 750 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7955, "diam": 750, "thick": 1.5, "temple": "O", "id": 99}, {"name": "DISCO 3.00 X 750 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 3.591, "diam": 750, "thick": 3.0, "temple": "O", "id": 100}, {"name": "DISCO 1.65 X 850 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.5368, "diam": 850, "thick": 1.65, "temple": "O", "id": 101}, {"name": "DISCO 1.65 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.8441, "diam": 900, "thick": 1.65, "temple": "O", "id": 102}, {"name": "DISCO 2.00 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 3.4474, "diam": 900, "thick": 2.0, "temple": "O", "id": 103}, {"name": "DISCO 3.00 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 5.171, "diam": 900, "thick": 3.0, "temple": "O", "id": 104}];
+/* ---------- datos de productos (fallback estático si la API no responde) ---------- */
+let PRODUCTS = [{"name": "DISCO 0.70 X 110 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0183, "diam": 110, "thick": 0.7, "temple": "O", "id": 21}, {"name": "DISCO 0.60 X 130 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0216, "diam": 130, "thick": 0.6, "temple": "H14", "id": 22}, {"name": "DISCO 0.90 X 130 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0324, "diam": 130, "thick": 0.9, "temple": "O", "id": 23}, {"name": "DISCO 0.60 X 150 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0287, "diam": 150, "thick": 0.6, "temple": "H14", "id": 24}, {"name": "DISCO 0.70 X 150 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.034, "diam": 150, "thick": 0.7, "temple": "O", "id": 25}, {"name": "DISCO 0.90 X 160 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.049, "diam": 160, "thick": 0.9, "temple": "O", "id": 26}, {"name": "DISCO 0.60 X 170 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0369, "diam": 170, "thick": 0.6, "temple": "H14", "id": 27}, {"name": "DISCO 0.70 X 180 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.049, "diam": 180, "thick": 0.7, "temple": "O", "id": 28}, {"name": "DISCO 0.90 X 180 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0621, "diam": 180, "thick": 0.9, "temple": "O", "id": 29}, {"name": "DISCO 0.60 X 190 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0461, "diam": 190, "thick": 0.6, "temple": "H14", "id": 30}, {"name": "DISCO 0.60 X 200 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0511, "diam": 200, "thick": 0.6, "temple": "H14", "id": 31}, {"name": "DISCO 0.90 X 200 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0766, "diam": 200, "thick": 0.9, "temple": "O", "id": 32}, {"name": "DISCO 0.60 X 210 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0563, "diam": 210, "thick": 0.6, "temple": "H14", "id": 33}, {"name": "DISCO 0.70 X 210 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0666, "diam": 210, "thick": 0.7, "temple": "O", "id": 34}, {"name": "DISCO 0.60 X 225 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0646, "diam": 225, "thick": 0.6, "temple": "O", "id": 35}, {"name": "DISCO 0.60 X 225 \"O\" (variante 2)", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0511, "diam": 225, "thick": 0.6, "temple": "O", "id": 36}, {"name": "DISCO 0.60 X 225 \"O\" (variante 3)", "cat": "Discos de aluminio", "unit": "disco", "weight": null, "diam": 225, "thick": 0.6, "temple": "O", "id": 37}, {"name": "DISCO 0.60 X 230 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0675, "diam": 230, "thick": 0.6, "temple": "H14", "id": 38}, {"name": "DISCO 0.70 X 230 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0799, "diam": 230, "thick": 0.7, "temple": "O", "id": 39}, {"name": "DISCO 0.90 X 230 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1013, "diam": 230, "thick": 0.9, "temple": "O", "id": 40}, {"name": "DISCO 0.60 X 240 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0735, "diam": 240, "thick": 0.6, "temple": "H14", "id": 41}, {"name": "DISCO 0.90 X 240 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1103, "diam": 240, "thick": 0.9, "temple": "O", "id": 42}, {"name": "DISCO 0.60 X 250 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0798, "diam": 250, "thick": 0.6, "temple": "H14", "id": 43}, {"name": "DISCO 0.70 X 250 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0944, "diam": 250, "thick": 0.7, "temple": "O", "id": 44}, {"name": "DISCO 0.60 X 270 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.0931, "diam": 270, "thick": 0.6, "temple": "H14", "id": 45}, {"name": "DISCO 0.70 X 280 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1185, "diam": 280, "thick": 0.7, "temple": "O", "id": 46}, {"name": "DISCO 0.90 X 280 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1502, "diam": 280, "thick": 0.9, "temple": "O", "id": 47}, {"name": "DISCO 0.60 X 290 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1074, "diam": 290, "thick": 0.6, "temple": "H14", "id": 48}, {"name": "DISCO 0.90 X 290 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1611, "diam": 290, "thick": 0.9, "temple": "O", "id": 49}, {"name": "DISCO 2.00 X 300 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.383, "diam": 300, "thick": 2.0, "temple": "O", "id": 50}, {"name": "DISCO 0.60 X 310 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1227, "diam": 310, "thick": 0.6, "temple": "H14", "id": 51}, {"name": "DISCO 0.70 X 310 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1452, "diam": 310, "thick": 0.7, "temple": "H14", "id": 52}, {"name": "DISCO 0.90 X 310 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1841, "diam": 310, "thick": 0.9, "temple": "O", "id": 53}, {"name": "DISCO 0.90 X 320 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1961, "diam": 320, "thick": 0.9, "temple": "O", "id": 54}, {"name": "DISCO 0.60 X 330 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.139, "diam": 330, "thick": 0.6, "temple": "H14", "id": 55}, {"name": "DISCO 0.90 X 330 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2086, "diam": 330, "thick": 0.9, "temple": "O", "id": 56}, {"name": "DISCO 0.70 X 340 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1747, "diam": 340, "thick": 0.7, "temple": "H14", "id": 57}, {"name": "DISCO 0.90 X 340 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2214, "diam": 340, "thick": 0.9, "temple": "O", "id": 58}, {"name": "DISCO 2.00 X 340 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.492, "diam": 340, "thick": 2.0, "temple": "O", "id": 59}, {"name": "DISCO 0.60 X 350 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1564, "diam": 350, "thick": 0.6, "temple": "H14", "id": 60}, {"name": "DISCO 0.70 X 350 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1851, "diam": 350, "thick": 0.7, "temple": "H14", "id": 61}, {"name": "DISCO 0.90 X 350 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2346, "diam": 350, "thick": 0.9, "temple": "O", "id": 62}, {"name": "DISCO 0.60 X 360 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1655, "diam": 360, "thick": 0.6, "temple": "H14", "id": 63}, {"name": "DISCO 0.60 X 370 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1748, "diam": 370, "thick": 0.6, "temple": "H14", "id": 64}, {"name": "DISCO 0.70 X 370 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2068, "diam": 370, "thick": 0.7, "temple": "H14", "id": 65}, {"name": "DISCO 0.60 X 380 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.1844, "diam": 380, "thick": 0.6, "temple": "H14", "id": 66}, {"name": "DISCO 0.70 X 380 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2182, "diam": 380, "thick": 0.7, "temple": "H14", "id": 67}, {"name": "DISCO 0.70 X 400 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2383, "diam": 400, "thick": 0.7, "temple": "H14", "id": 68}, {"name": "DISCO 0.70 X 420 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.2665, "diam": 420, "thick": 0.7, "temple": "H14", "id": 69}, {"name": "DISCO 0.90 X 420 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3378, "diam": 420, "thick": 0.9, "temple": "O", "id": 70}, {"name": "DISCO 1.00 X 420 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3754, "diam": 420, "thick": 1.0, "temple": "O", "id": 71}, {"name": "DISCO 1.00 X 440 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.412, "diam": 440, "thick": 1.0, "temple": "O", "id": 72}, {"name": "DISCO 0.70 X 450 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.306, "diam": 450, "thick": 0.7, "temple": "H14", "id": 73}, {"name": "DISCO 0.90 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3878, "diam": 450, "thick": 0.9, "temple": "O", "id": 74}, {"name": "DISCO 1.00 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4309, "diam": 450, "thick": 1.0, "temple": "O", "id": 75}, {"name": "DISCO 1.25 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.5387, "diam": 450, "thick": 1.25, "temple": "O", "id": 76}, {"name": "DISCO 2.00 X 450 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.8618, "diam": 450, "thick": 2.0, "temple": "O", "id": 77}, {"name": "DISCO 0.80 X 460 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.3602, "diam": 460, "thick": 0.8, "temple": "H14", "id": 78}, {"name": "DISCO 1.00 X 480 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4903, "diam": 480, "thick": 1.0, "temple": "O", "id": 79}, {"name": "DISCO 1.00 X 500 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.532, "diam": 500, "thick": 1.0, "temple": "O", "id": 80}, {"name": "DISCO 1.25 X 500 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.665, "diam": 500, "thick": 1.25, "temple": "O", "id": 81}, {"name": "DISCO 0.80 X 510 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4428, "diam": 510, "thick": 0.8, "temple": "H14", "id": 82}, {"name": "DISCO 1.25 X 520 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.7193, "diam": 520, "thick": 1.25, "temple": "O", "id": 83}, {"name": "DISCO 0.80 X 530 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.4782, "diam": 530, "thick": 0.8, "temple": "H14", "id": 84}, {"name": "DISCO 2.00 X 530 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.1955, "diam": 530, "thick": 2.0, "temple": "O", "id": 85}, {"name": "DISCO 1.25 X 540 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.7757, "diam": 540, "thick": 1.25, "temple": "O", "id": 86}, {"name": "DISCO 0.80 X 560 H14", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.5339, "diam": 560, "thick": 0.8, "temple": "H14", "id": 87}, {"name": "DISCO 1.25 X 570 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.8642, "diam": 570, "thick": 1.25, "temple": "O", "id": 88}, {"name": "DISCO 1.80 X 570 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.2445, "diam": 570, "thick": 1.8, "temple": "O", "id": 89}, {"name": "DISCO 1.25 X 610 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 0.9898, "diam": 610, "thick": 1.25, "temple": "O", "id": 90}, {"name": "DISCO 1.25 X 620 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.0225, "diam": 620, "thick": 1.25, "temple": "O", "id": 91}, {"name": "DISCO 1.25 X 630 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.0558, "diam": 630, "thick": 1.25, "temple": "O", "id": 92}, {"name": "DISCO 1.50 X 630 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.2669, "diam": 630, "thick": 1.5, "temple": "O", "id": 93}, {"name": "DISCO 2.00 X 640 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7433, "diam": 640, "thick": 2.0, "temple": "O", "id": 94}, {"name": "DISCO 1.25 X 650 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.1239, "diam": 650, "thick": 1.25, "temple": "O", "id": 95}, {"name": "DISCO 3.00 X 650 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.6972, "diam": 650, "thick": 3.0, "temple": "O", "id": 96}, {"name": "DISCO 1.65 X 700 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7205, "diam": 700, "thick": 1.65, "temple": "O", "id": 97}, {"name": "DISCO 1.40 X 730 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.5876, "diam": 730, "thick": 1.4, "temple": "O", "id": 98}, {"name": "DISCO 1.50 X 750 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 1.7955, "diam": 750, "thick": 1.5, "temple": "O", "id": 99}, {"name": "DISCO 3.00 X 750 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 3.591, "diam": 750, "thick": 3.0, "temple": "O", "id": 100}, {"name": "DISCO 1.65 X 850 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.5368, "diam": 850, "thick": 1.65, "temple": "O", "id": 101}, {"name": "DISCO 1.65 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 2.8441, "diam": 900, "thick": 1.65, "temple": "O", "id": 102}, {"name": "DISCO 2.00 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 3.4474, "diam": 900, "thick": 2.0, "temple": "O", "id": 103}, {"name": "DISCO 3.00 X 900 \"O\"", "cat": "Discos de aluminio", "unit": "disco", "weight": 5.171, "diam": 900, "thick": 3.0, "temple": "O", "id": 104}];
 
-const THICKNESSES = [...new Set(PRODUCTS.map(p=>p.thick))].sort((a,b)=>a-b);
+let THICKNESSES = [...new Set(PRODUCTS.map(p=>p.thick))].sort((a,b)=>a-b);
 const WHATSAPP_NUMBER = "523328246539";
+const API_BASE = '/api';
+
+async function loadProductsFromAPI(){
+  try{
+    const res = await fetch(API_BASE + '/products');
+    if(!res.ok) throw new Error('API no disponible');
+    const data = await res.json();
+    if(Array.isArray(data) && data.length){
+      PRODUCTS = data;
+      THICKNESSES = [...new Set(PRODUCTS.map(p=>p.thick))].sort((a,b)=>a-b);
+    }
+  }catch(e){
+    console.warn('No se pudo cargar el catálogo desde el servidor, usando datos locales.', e);
+  }
+  buildTabs();
+  renderList();
+}
 
 /* ---------- estado del carrito ---------- */
 let cart = {}; // id -> qty
@@ -867,10 +913,33 @@ function renderDrawer(){
     <button class="clear-link" id="clearCartBtn">Vaciar pedido</button>
   `;
 
-  document.getElementById('sendWaBtn').addEventListener('click', (e)=>{
+  document.getElementById('sendWaBtn').addEventListener('click', async (e)=>{
     e.preventDefault();
-    const msg = buildWhatsAppMessage();
+    const btn = e.currentTarget;
+    const originalText = btn.textContent;
+    btn.style.pointerEvents = 'none';
+    btn.textContent = 'Registrando pedido...';
+    let folio = null;
+    try{
+      const items = cartItemsDetailed();
+      const res = await fetch(API_BASE + '/orders', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          items: items.map(({p,qty})=>({ product_id: p.id, product_name: p.name, qty_kg: qty }))
+        })
+      });
+      if(res.ok){
+        const data = await res.json();
+        folio = data.folio;
+      }
+    }catch(err){
+      console.warn('No se pudo registrar el pedido en el servidor, se envía solo por WhatsApp.', err);
+    }
+    const msg = buildWhatsAppMessage(folio);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    btn.style.pointerEvents = '';
+    btn.textContent = originalText;
   });
   document.getElementById('clearCartBtn').addEventListener('click', ()=>{
     cart = {};
@@ -878,10 +947,11 @@ function renderDrawer(){
   });
 }
 
-function buildWhatsAppMessage(){
+function buildWhatsAppMessage(folio){
   const items = cartItemsDetailed();
   let lines = [];
   lines.push('Hola, quiero hacer el siguiente pedido a *Silsa Aluminio*:');
+  if(folio) lines.push(`Folio: *${folio}*`);
   lines.push('');
   items.forEach(({p,qty}, idx)=>{
     let line = `${idx+1}. ${p.name} — ${qty.toFixed(2)} kg`;
@@ -921,8 +991,7 @@ mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> mainNa
 
 /* ---------- init ---------- */
 loadCart();
-buildTabs();
-renderList();
+loadProductsFromAPI();
 updateCartUI();
 </script>
 </body>
