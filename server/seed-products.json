@@ -110,6 +110,16 @@
     "id": 11
   },
   {
+    "name": "DISCO 0.60 X 280 H14",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.1001,
+    "diam": 280,
+    "thick": 0.6,
+    "temple": "H14",
+    "id": 12
+  },
+  {
     "name": "DISCO 0.60 X 290 H14",
     "cat": "Discos de aluminio",
     "unit": "disco",
@@ -117,7 +127,7 @@
     "diam": 290,
     "thick": 0.6,
     "temple": "H14",
-    "id": 12
+    "id": 13
   },
   {
     "name": "DISCO 0.60 X 310 H14",
@@ -127,7 +137,7 @@
     "diam": 310,
     "thick": 0.6,
     "temple": "H14",
-    "id": 13
+    "id": 14
   },
   {
     "name": "DISCO 0.60 X 330 H14",
@@ -137,7 +147,7 @@
     "diam": 330,
     "thick": 0.6,
     "temple": "H14",
-    "id": 14
+    "id": 15
   },
   {
     "name": "DISCO 0.60 X 350 H14",
@@ -147,7 +157,7 @@
     "diam": 350,
     "thick": 0.6,
     "temple": "H14",
-    "id": 15
+    "id": 16
   },
   {
     "name": "DISCO 0.60 X 360 H14",
@@ -157,7 +167,7 @@
     "diam": 360,
     "thick": 0.6,
     "temple": "H14",
-    "id": 16
+    "id": 17
   },
   {
     "name": "DISCO 0.60 X 370 H14",
@@ -167,7 +177,7 @@
     "diam": 370,
     "thick": 0.6,
     "temple": "H14",
-    "id": 17
+    "id": 18
   },
   {
     "name": "DISCO 0.60 X 380 H14",
@@ -177,7 +187,7 @@
     "diam": 380,
     "thick": 0.6,
     "temple": "H14",
-    "id": 18
+    "id": 19
   },
   {
     "name": "DISCO 0.70 X 110 \"O\"",
@@ -187,7 +197,7 @@
     "diam": 110,
     "thick": 0.7,
     "temple": "O",
-    "id": 19
+    "id": 20
   },
   {
     "name": "DISCO 0.70 X 150 \"O\"",
@@ -197,7 +207,7 @@
     "diam": 150,
     "thick": 0.7,
     "temple": "O",
-    "id": 20
+    "id": 21
   },
   {
     "name": "DISCO 0.70 X 180 \"O\"",
@@ -207,7 +217,7 @@
     "diam": 180,
     "thick": 0.7,
     "temple": "O",
-    "id": 21
+    "id": 22
   },
   {
     "name": "DISCO 0.70 X 210 \"O\"",
@@ -217,7 +227,7 @@
     "diam": 210,
     "thick": 0.7,
     "temple": "O",
-    "id": 22
+    "id": 23
   },
   {
     "name": "DISCO 0.70 X 230 \"O\"",
@@ -227,7 +237,7 @@
     "diam": 230,
     "thick": 0.7,
     "temple": "O",
-    "id": 23
+    "id": 24
   },
   {
     "name": "DISCO 0.70 X 250 \"O\"",
@@ -237,7 +247,7 @@
     "diam": 250,
     "thick": 0.7,
     "temple": "O",
-    "id": 24
+    "id": 25
   },
   {
     "name": "DISCO 0.70 X 280 \"O\"",
@@ -247,7 +257,17 @@
     "diam": 280,
     "thick": 0.7,
     "temple": "O",
-    "id": 25
+    "id": 26
+  },
+  {
+    "name": "DISCO 0.70 X 300 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.136,
+    "diam": 300,
+    "thick": 0.7,
+    "temple": "O",
+    "id": 27
   },
   {
     "name": "DISCO 0.70 X 310 H14",
@@ -257,7 +277,7 @@
     "diam": 310,
     "thick": 0.7,
     "temple": "H14",
-    "id": 26
+    "id": 28
   },
   {
     "name": "DISCO 0.70 X 320 \"O\"",
@@ -267,7 +287,7 @@
     "diam": 320,
     "thick": 0.7,
     "temple": "O",
-    "id": 27
+    "id": 29
   },
   {
     "name": "DISCO 0.70 X 340 H14",
@@ -277,7 +297,7 @@
     "diam": 340,
     "thick": 0.7,
     "temple": "H14",
-    "id": 28
+    "id": 30
   },
   {
     "name": "DISCO 0.70 X 340 \"O\"",
@@ -287,7 +307,7 @@
     "diam": 340,
     "thick": 0.7,
     "temple": "O",
-    "id": 29
+    "id": 31
   },
   {
     "name": "DISCO 0.70 X 350 H14",
@@ -297,7 +317,7 @@
     "diam": 350,
     "thick": 0.7,
     "temple": "H14",
-    "id": 30
+    "id": 32
   },
   {
     "name": "DISCO 0.70 X 370 H14",
@@ -307,7 +327,7 @@
     "diam": 370,
     "thick": 0.7,
     "temple": "H14",
-    "id": 31
+    "id": 33
   },
   {
     "name": "DISCO 0.70 X 380 H14",
@@ -317,7 +337,7 @@
     "diam": 380,
     "thick": 0.7,
     "temple": "H14",
-    "id": 32
+    "id": 34
   },
   {
     "name": "DISCO 0.70 X 400 H14",
@@ -327,7 +347,7 @@
     "diam": 400,
     "thick": 0.7,
     "temple": "H14",
-    "id": 33
+    "id": 35
   },
   {
     "name": "DISCO 0.70 X 420 H14",
@@ -337,7 +357,7 @@
     "diam": 420,
     "thick": 0.7,
     "temple": "H14",
-    "id": 34
+    "id": 36
   },
   {
     "name": "DISCO 0.70 X 450 H14",
@@ -347,7 +367,7 @@
     "diam": 450,
     "thick": 0.7,
     "temple": "H14",
-    "id": 35
+    "id": 37
   },
   {
     "name": "DISCO 0.80 X 460 H14",
@@ -357,7 +377,7 @@
     "diam": 460,
     "thick": 0.8,
     "temple": "H14",
-    "id": 36
+    "id": 38
   },
   {
     "name": "DISCO 0.80 X 510 H14",
@@ -367,7 +387,7 @@
     "diam": 510,
     "thick": 0.8,
     "temple": "H14",
-    "id": 37
+    "id": 39
   },
   {
     "name": "DISCO 0.80 X 530 H14",
@@ -377,7 +397,7 @@
     "diam": 530,
     "thick": 0.8,
     "temple": "H14",
-    "id": 38
+    "id": 40
   },
   {
     "name": "DISCO 0.80 X 560 H14",
@@ -387,7 +407,7 @@
     "diam": 560,
     "thick": 0.8,
     "temple": "H14",
-    "id": 39
+    "id": 41
   },
   {
     "name": "DISCO 0.90 X 130 \"O\"",
@@ -397,7 +417,7 @@
     "diam": 130,
     "thick": 0.9,
     "temple": "O",
-    "id": 40
+    "id": 42
   },
   {
     "name": "DISCO 0.90 X 160 \"O\"",
@@ -407,7 +427,7 @@
     "diam": 160,
     "thick": 0.9,
     "temple": "O",
-    "id": 41
+    "id": 43
   },
   {
     "name": "DISCO 0.90 X 180 \"O\"",
@@ -417,7 +437,7 @@
     "diam": 180,
     "thick": 0.9,
     "temple": "O",
-    "id": 42
+    "id": 44
   },
   {
     "name": "DISCO 0.90 X 200 \"O\"",
@@ -427,7 +447,7 @@
     "diam": 200,
     "thick": 0.9,
     "temple": "O",
-    "id": 43
+    "id": 45
   },
   {
     "name": "DISCO 0.90 X 230 \"O\"",
@@ -437,7 +457,7 @@
     "diam": 230,
     "thick": 0.9,
     "temple": "O",
-    "id": 44
+    "id": 46
   },
   {
     "name": "DISCO 0.90 X 240 \"O\"",
@@ -447,7 +467,27 @@
     "diam": 240,
     "thick": 0.9,
     "temple": "O",
-    "id": 45
+    "id": 47
+  },
+  {
+    "name": "DISCO 0.90 X 250 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.1197,
+    "diam": 250,
+    "thick": 0.9,
+    "temple": "O",
+    "id": 48
+  },
+  {
+    "name": "DISCO 0.90 X 260 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.1295,
+    "diam": 260,
+    "thick": 0.9,
+    "temple": "O",
+    "id": 49
   },
   {
     "name": "DISCO 0.90 X 280 \"O\"",
@@ -457,7 +497,7 @@
     "diam": 280,
     "thick": 0.9,
     "temple": "O",
-    "id": 46
+    "id": 50
   },
   {
     "name": "DISCO 0.90 X 290 \"O\"",
@@ -467,7 +507,7 @@
     "diam": 290,
     "thick": 0.9,
     "temple": "O",
-    "id": 47
+    "id": 51
   },
   {
     "name": "DISCO 0.90 X 310 \"O\"",
@@ -477,7 +517,7 @@
     "diam": 310,
     "thick": 0.9,
     "temple": "O",
-    "id": 48
+    "id": 52
   },
   {
     "name": "DISCO 0.90 X 320 \"O\"",
@@ -487,7 +527,7 @@
     "diam": 320,
     "thick": 0.9,
     "temple": "O",
-    "id": 49
+    "id": 53
   },
   {
     "name": "DISCO 0.90 X 330 \"O\"",
@@ -497,7 +537,7 @@
     "diam": 330,
     "thick": 0.9,
     "temple": "O",
-    "id": 50
+    "id": 54
   },
   {
     "name": "DISCO 0.90 X 340 \"O\"",
@@ -507,7 +547,7 @@
     "diam": 340,
     "thick": 0.9,
     "temple": "O",
-    "id": 51
+    "id": 55
   },
   {
     "name": "DISCO 0.90 X 350 \"O\"",
@@ -517,7 +557,7 @@
     "diam": 350,
     "thick": 0.9,
     "temple": "O",
-    "id": 52
+    "id": 56
   },
   {
     "name": "DISCO 0.90 X 360 \"O\"",
@@ -527,7 +567,17 @@
     "diam": 360,
     "thick": 0.9,
     "temple": "O",
-    "id": 53
+    "id": 57
+  },
+  {
+    "name": "DISCO 0.90 X 380 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.2766,
+    "diam": 380,
+    "thick": 0.9,
+    "temple": "O",
+    "id": 58
   },
   {
     "name": "DISCO 0.90 X 400 \"O\"",
@@ -537,7 +587,7 @@
     "diam": 400,
     "thick": 0.9,
     "temple": "O",
-    "id": 54
+    "id": 59
   },
   {
     "name": "DISCO 0.90 X 420 \"O\"",
@@ -547,7 +597,7 @@
     "diam": 420,
     "thick": 0.9,
     "temple": "O",
-    "id": 55
+    "id": 60
   },
   {
     "name": "DISCO 0.90 X 450 \"O\"",
@@ -557,7 +607,7 @@
     "diam": 450,
     "thick": 0.9,
     "temple": "O",
-    "id": 56
+    "id": 61
   },
   {
     "name": "DISCO 1.00 X 420 \"O\"",
@@ -567,7 +617,7 @@
     "diam": 420,
     "thick": 1.0,
     "temple": "O",
-    "id": 57
+    "id": 62
   },
   {
     "name": "DISCO 1.00 X 440 \"O\"",
@@ -577,7 +627,7 @@
     "diam": 440,
     "thick": 1.0,
     "temple": "O",
-    "id": 58
+    "id": 63
   },
   {
     "name": "DISCO 1.00 X 450 \"O\"",
@@ -587,7 +637,17 @@
     "diam": 450,
     "thick": 1.0,
     "temple": "O",
-    "id": 59
+    "id": 64
+  },
+  {
+    "name": "DISCO 1.00 X 460 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 0.4503,
+    "diam": 460,
+    "thick": 1.0,
+    "temple": "O",
+    "id": 65
   },
   {
     "name": "DISCO 1.00 X 480 \"O\"",
@@ -597,7 +657,7 @@
     "diam": 480,
     "thick": 1.0,
     "temple": "O",
-    "id": 60
+    "id": 66
   },
   {
     "name": "DISCO 1.00 X 500 \"O\"",
@@ -607,7 +667,7 @@
     "diam": 500,
     "thick": 1.0,
     "temple": "O",
-    "id": 61
+    "id": 67
   },
   {
     "name": "DISCO 1.25 X 450 \"O\"",
@@ -617,7 +677,7 @@
     "diam": 450,
     "thick": 1.25,
     "temple": "O",
-    "id": 62
+    "id": 68
   },
   {
     "name": "DISCO 1.25 X 500 \"O\"",
@@ -627,7 +687,7 @@
     "diam": 500,
     "thick": 1.25,
     "temple": "O",
-    "id": 63
+    "id": 69
   },
   {
     "name": "DISCO 1.25 X 520 \"O\"",
@@ -637,7 +697,7 @@
     "diam": 520,
     "thick": 1.25,
     "temple": "O",
-    "id": 64
+    "id": 70
   },
   {
     "name": "DISCO 1.25 X 540 \"O\"",
@@ -647,7 +707,7 @@
     "diam": 540,
     "thick": 1.25,
     "temple": "O",
-    "id": 65
+    "id": 71
   },
   {
     "name": "DISCO 1.25 X 570 \"O\"",
@@ -657,7 +717,7 @@
     "diam": 570,
     "thick": 1.25,
     "temple": "O",
-    "id": 66
+    "id": 72
   },
   {
     "name": "DISCO 1.25 X 610 \"O\"",
@@ -667,7 +727,7 @@
     "diam": 610,
     "thick": 1.25,
     "temple": "O",
-    "id": 67
+    "id": 73
   },
   {
     "name": "DISCO 1.25 X 620 \"O\"",
@@ -677,7 +737,7 @@
     "diam": 620,
     "thick": 1.25,
     "temple": "O",
-    "id": 68
+    "id": 74
   },
   {
     "name": "DISCO 1.25 X 630 \"O\"",
@@ -687,7 +747,7 @@
     "diam": 630,
     "thick": 1.25,
     "temple": "O",
-    "id": 69
+    "id": 75
   },
   {
     "name": "DISCO 1.25 X 650 \"O\"",
@@ -697,7 +757,7 @@
     "diam": 650,
     "thick": 1.25,
     "temple": "O",
-    "id": 70
+    "id": 76
   },
   {
     "name": "DISCO 1.40 X 730 \"O\"",
@@ -707,7 +767,7 @@
     "diam": 730,
     "thick": 1.4,
     "temple": "O",
-    "id": 71
+    "id": 77
   },
   {
     "name": "DISCO 1.50 X 630 \"O\"",
@@ -717,7 +777,7 @@
     "diam": 630,
     "thick": 1.5,
     "temple": "O",
-    "id": 72
+    "id": 78
   },
   {
     "name": "DISCO 1.50 X 750 \"O\"",
@@ -727,7 +787,7 @@
     "diam": 750,
     "thick": 1.5,
     "temple": "O",
-    "id": 73
+    "id": 79
   },
   {
     "name": "DISCO 1.65 X 700 \"O\"",
@@ -737,7 +797,7 @@
     "diam": 700,
     "thick": 1.65,
     "temple": "O",
-    "id": 74
+    "id": 80
   },
   {
     "name": "DISCO 1.65 X 850 \"O\"",
@@ -747,7 +807,7 @@
     "diam": 850,
     "thick": 1.65,
     "temple": "O",
-    "id": 75
+    "id": 81
   },
   {
     "name": "DISCO 1.65 X 900 \"O\"",
@@ -757,7 +817,7 @@
     "diam": 900,
     "thick": 1.65,
     "temple": "O",
-    "id": 76
+    "id": 82
   },
   {
     "name": "DISCO 1.80 X 570 \"O\"",
@@ -767,7 +827,7 @@
     "diam": 570,
     "thick": 1.8,
     "temple": "O",
-    "id": 77
+    "id": 83
   },
   {
     "name": "DISCO 2.00 X 300 \"O\"",
@@ -777,7 +837,7 @@
     "diam": 300,
     "thick": 2.0,
     "temple": "O",
-    "id": 78
+    "id": 84
   },
   {
     "name": "DISCO 2.00 X 340 \"O\"",
@@ -787,7 +847,7 @@
     "diam": 340,
     "thick": 2.0,
     "temple": "O",
-    "id": 79
+    "id": 85
   },
   {
     "name": "DISCO 2.00 X 450 \"O\"",
@@ -797,7 +857,7 @@
     "diam": 450,
     "thick": 2.0,
     "temple": "O",
-    "id": 80
+    "id": 86
   },
   {
     "name": "DISCO 2.00 X 530 \"O\"",
@@ -807,7 +867,7 @@
     "diam": 530,
     "thick": 2.0,
     "temple": "O",
-    "id": 81
+    "id": 87
   },
   {
     "name": "DISCO 2.00 X 640 \"O\"",
@@ -817,7 +877,7 @@
     "diam": 640,
     "thick": 2.0,
     "temple": "O",
-    "id": 82
+    "id": 88
   },
   {
     "name": "DISCO 2.00 X 900 \"O\"",
@@ -827,7 +887,17 @@
     "diam": 900,
     "thick": 2.0,
     "temple": "O",
-    "id": 83
+    "id": 89
+  },
+  {
+    "name": "DISCO 3.00 X 550 \"O\"",
+    "cat": "Discos de aluminio",
+    "unit": "disco",
+    "weight": 1.9312,
+    "diam": 550,
+    "thick": 3.0,
+    "temple": "O",
+    "id": 90
   },
   {
     "name": "DISCO 3.00 X 650 \"O\"",
@@ -837,7 +907,7 @@
     "diam": 650,
     "thick": 3.0,
     "temple": "O",
-    "id": 84
+    "id": 91
   },
   {
     "name": "DISCO 3.00 X 750 \"O\"",
@@ -847,7 +917,7 @@
     "diam": 750,
     "thick": 3.0,
     "temple": "O",
-    "id": 85
+    "id": 92
   },
   {
     "name": "DISCO 3.00 X 900 \"O\"",
@@ -857,6 +927,6 @@
     "diam": 900,
     "thick": 3.0,
     "temple": "O",
-    "id": 86
+    "id": 93
   }
 ]
