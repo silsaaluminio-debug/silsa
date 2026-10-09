@@ -968,7 +968,9 @@ function renderDrawer(){
 }
 
 function buildWhatsAppMessage(folio){
-  const items = cartItemsDetailed();
+  const items = cartItemsDetailed().sort((a,b)=>
+    (a.p.diam - b.p.diam) || (a.p.thick - b.p.thick)
+  );
   let lines = [];
   lines.push('Hola, quiero hacer el siguiente pedido a *Silsa Aluminio*:');
   if(folio) lines.push(`Folio: *${folio}*`);
