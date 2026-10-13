@@ -393,6 +393,19 @@ footer.site{background:var(--carbon-900);color:rgba(255,255,255,.7);padding:56px
 .foot-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:8px;}
 @media (max-width:800px){.foot-grid{grid-template-columns:1fr;}.foot-grid img{max-width:220px;}}
 
+/* botón flotante MENU: vuelve al selector de calibres */
+.menu-fab{
+  position:fixed;left:16px;bottom:22px;z-index:48;
+  display:flex;align-items:center;gap:7px;
+  background:var(--azul-950);color:#fff;border:none;
+  padding:11px 18px 11px 14px;border-radius:99px;font-weight:700;font-size:13px;
+  letter-spacing:.3px;box-shadow:var(--shadow-2);
+  transition:transform .15s ease, background .15s ease;
+}
+.menu-fab:hover{background:var(--carbon-900);transform:translateY(-2px);}
+.menu-fab svg{width:18px;height:18px;flex:none;}
+@media (max-width:640px){.menu-fab{padding:10px 15px 10px 12px;font-size:12.5px;}.menu-fab svg{width:16px;height:16px;}}
+
 /* mini barra de carrito flotante (móvil y escritorio) */
 .mini-cart-bar{
   position:fixed;left:12px;right:12px;bottom:70px;z-index:49;
@@ -620,6 +633,11 @@ footer.site{background:var(--carbon-900);color:rgba(255,255,255,.7);padding:56px
 </footer>
 
 <!-- ================= FLOTANTES ================= -->
+<button class="menu-fab" id="menuFab" aria-label="Ir al selector de calibres">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  MENU
+</button>
+
 <div class="mini-cart-bar" id="miniCartBar">
   <div class="info"><b id="miniCartCount">0</b> kg en tu pedido</div>
   <button class="btn btn-primary" id="miniCartBtn" style="padding:11px 18px;font-size:14px;">Ver pedido</button>
@@ -984,8 +1002,6 @@ function buildWhatsAppMessage(folio){
   lines.push('');
   lines.push(`Peso total del pedido: ${totalWeight.toFixed(2)} kg`);
   lines.push(`Medidas distintas: ${items.length}`);
-  lines.push('');
-  lines.push('Quedo al pendiente de precio y disponibilidad. ¡Gracias!');
   return lines.join('\n');
 }
 
@@ -1004,6 +1020,16 @@ document.getElementById('openCartBtn').addEventListener('click', openDrawer);
 document.getElementById('miniCartBtn').addEventListener('click', openDrawer);
 document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
 overlay.addEventListener('click', closeDrawer);
+
+/* ---------- botón MENU: volver al selector de calibres ---------- */
+document.getElementById('menuFab').addEventListener('click', ()=>{
+  const target = document.querySelector('.thickness-callout');
+  if(!target) return;
+  const headerEl = document.querySelector('header.site');
+  const offset = (headerEl ? headerEl.offsetHeight : 0) + 12;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({top, behavior:'smooth'});
+});
 
 /* ---------- header fijo: compensar el espacio que deja de ocupar en el flujo ---------- */
 function syncHeaderOffset(){
